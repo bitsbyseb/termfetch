@@ -7,3 +7,6 @@ Termfetch is a Command Line Interface tool, for view specs from your pc.
 
 * Try it, running the following command:
 > termfetch
+
+## **Screenshots**
+![termfetch](./public/termfetch.png)

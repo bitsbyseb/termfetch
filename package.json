@@ -5,13 +5,19 @@
   "bin": {
     "termfetch":"./bin/global.js"
   },
+  "licenses": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitsbyseb/termfetch.git"
+  },
   "preferGlobal": true,
   "description": "",
   "main": "./index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test":"node ./bin/global.js" 
   },
-  "keywords": [],
+  "keywords": ["neofetch","terminal","cli","shell","xterm","log","command-line","console"],
+  "homepage": "https://github.com/bitsbyseb/termfetch#readme",
   "author": "johanpuentes",
   "license": "ISC",
   "dependencies": {
