@@ -15,7 +15,7 @@ const printProgramName = async () => {
           throw new Error(err);
         }
 
-        console.log("\n" + chalk.yellow(data));
+        console.log("\n" + chalk.red(data));
       }
     );
   } catch (err) {
@@ -23,15 +23,24 @@ const printProgramName = async () => {
   }
 };
 
+/**
+ * @typedef {Object} ParseUptime
+ * @property {number} days
+ * @property {number} hours
+ * @property {number} minutes
+ * @property {number} seconds 
+ */
+
+/**
+ * 
+ * @param {number} seconds 
+ * @returns {ParseUptime}
+ */
 const parseSeconds = (seconds) => {
-  /**
-   * this code of above is from
-   * https://www.satsig.net/training/seconds-days-hours-minutes-calculator.htm
-   */
   let day = 86400;
   let hour = 3600;
   let minute = 60;
-
+  
   let daysOut = Math.floor(seconds / day);
   let hoursOut = Math.floor((seconds - daysOut * day) / hour);
   let minutesOut = Math.floor(
@@ -46,15 +55,24 @@ const parseSeconds = (seconds) => {
     minutes: minutesOut,
     seconds: secondsOut,
   };
+  /**
+   * this code of above is from
+   * https://www.satsig.net/training/seconds-days-hours-minutes-calculator.htm
+   */
 };
 
 const printProps = () => {
   for (let prop in properties) {
     if (prop === "INFO_USER") {
-      process.stdout.write(`${properties[prop]} \n --------------------`);
+      let separator = '';
+      for (let i = 0;i < properties[prop].length/2;i++) {
+        separator += '-';
+      }
+
+      process.stdout.write(`${properties[prop]}\n${separator}`);
     } else {
       process.stdout.write(
-        `\n${chalk.red(prop)}:${chalk.yellow(properties[prop])}`
+        `\n${chalk.red(prop)}:${properties[prop]}`
       );
     }
   }
@@ -71,15 +89,15 @@ const properties = {
     os.cpus().length /
     1000
   } GHZ  (${os.cpus().length}x)`,
-  UPTIME: chalk.yellow(
+  UPTIME:
     `${secondsFormat.days} Days ${secondsFormat.hours} Hours ${secondsFormat.minutes} mins ${secondsFormat.seconds} secs`
-  ),
+  ,
   OS: os.version(),
   ARCH: os.arch(),
   KERNEL_VERSION: os.release(),
   OS_TYPE: os.type(),
   MEMORY: `${parseInt((os.totalmem() - os.freemem()) / 1_000_000)} MIB / ${
-    os.totalmem() / 1_000_000
+    parseInt(os.totalmem() / 1_000_000)
   } MIB (${parseInt(((os.totalmem() - os.freemem()) / os.totalmem()) * 100)}%)`,
 };
 
