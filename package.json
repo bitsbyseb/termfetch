@@ -11,7 +11,7 @@
     "url": "git+https://github.com/bitsbyseb/termfetch.git"
   },
   "preferGlobal": true,
-  "description": "",
+  "description": "command-line system information tool written in JavaScript.Termfetch displays information about your operating system, software and hardware in an aesthetic and visually pleasing way.",
   "main": "./index.js",
   "scripts": {
     "test":"node ./bin/global.js" 
