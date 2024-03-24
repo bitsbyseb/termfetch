@@ -37,6 +37,10 @@ const printProgramName = async () => {
  * @returns {ParseUptime}
  */
 const parseSeconds = (seconds) => {
+  /**
+   * the code of below is from
+   * https://www.satsig.net/training/seconds-days-hours-minutes-calculator.htm
+   */
   let day = 86400;
   let hour = 3600;
   let minute = 60;
@@ -55,21 +59,12 @@ const parseSeconds = (seconds) => {
     minutes: minutesOut,
     seconds: secondsOut,
   };
-  /**
-   * this code of above is from
-   * https://www.satsig.net/training/seconds-days-hours-minutes-calculator.htm
-   */
 };
 
 const printProps = () => {
   for (let prop in properties) {
     if (prop === "INFO_USER") {
-      let separator = '';
-      for (let i = 0;i < properties[prop].length/2;i++) {
-        separator += '-';
-      }
-
-      process.stdout.write(`${properties[prop]}\n${separator}`);
+      process.stdout.write(`${properties[prop]}\n${'-'.repeat((properties[prop].length/2)+1)}`);
     } else {
       process.stdout.write(
         `\n${chalk.red(prop)}:${properties[prop]}`
