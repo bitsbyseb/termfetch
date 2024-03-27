@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.2",
   "bin": {
-    "termfetch":"./bin/global.js"
+    "termfetch": "./bin/global.js"
   },
   "licenses": "MIT",
   "repository": {
@@ -14,14 +14,22 @@
   "description": "command-line system information tool written in JavaScript.Termfetch displays information about your operating system, software and hardware in an aesthetic and visually pleasing way.",
   "main": "./index.js",
   "scripts": {
-    "test":"node ./bin/global.js" 
+    "test": "node ./bin/global.js"
   },
-  "keywords": ["neofetch","terminal","cli","shell","xterm","log","command-line","console"],
+  "keywords": [
+    "neofetch",
+    "terminal",
+    "cli",
+    "shell",
+    "xterm",
+    "log",
+    "command-line",
+    "console"
+  ],
   "homepage": "https://github.com/bitsbyseb/termfetch#readme",
   "author": "johanpuentes",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^5.3.0",
-    "figlet": "^1.7.0"
+    "chalk": "^5.3.0"
   }
 }
