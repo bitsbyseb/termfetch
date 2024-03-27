@@ -2,7 +2,7 @@ import os from "node:os";
 import chalk from "chalk";
 import parseSeconds from './utils/parseSeconds.js';
 import parseAscii from "./utils/parseAscii.js";
-import { join } from "node:path";
+import path, { join } from "node:path";
 
 /**
  * returns the longer number between
@@ -16,7 +16,8 @@ const longerNumber = (num1,num2) => {
 }
 
 const printInfo = async () => {
-  const ascii = await parseAscii(join(process.cwd(),'asciiArt.txt'));
+  // yeah this line is very bad, but i dunno how call the main module directory
+  const ascii = await parseAscii(join(import.meta.filename.substring(0,import.meta.filename.length-12),'asciiArt.txt'));
   const propertyKeys = Object.keys(properties);
   const length = longerNumber(propertyKeys.length,ascii.length);
 
