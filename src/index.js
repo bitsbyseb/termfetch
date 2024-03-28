@@ -2,8 +2,6 @@ import os from "node:os";
 import chalk from "chalk";
 import parseSeconds from './utils/parseSeconds.js';
 import parseAscii from "./utils/parseAscii.js";
-import path, { join } from "node:path";
-
 /**
  * returns the longer number between
  * two numbers
@@ -16,8 +14,8 @@ const longerNumber = (num1,num2) => {
 }
 
 const printInfo = async () => {
-  // yeah this line is very bad, but i dunno how call the main module directory
-  const ascii = await parseAscii(join(import.meta.filename.substring(0,import.meta.filename.length-12),'asciiArt.txt'));
+  // yeah,this line is very bad, but i dunno how call the main module directory
+  const ascii = await parseAscii();
   const propertyKeys = Object.keys(properties);
   const length = longerNumber(propertyKeys.length,ascii.length);
 
@@ -31,7 +29,7 @@ const printInfo = async () => {
       propertyString = `${chalk.green(key) ?? ''}: ${value ?? ''}`
     }
 
-    process.stdout.write(`\n${chalk.greenBright(asciiLine ?? '')} \t ${propertyString ?? ''}`);
+    process.stdout.write(`\n\t${chalk.green(asciiLine ?? '')} \t ${propertyString ?? ''}`);
   }
 };
 
