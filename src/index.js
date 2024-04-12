@@ -14,15 +14,14 @@ const longerNumber = (num1,num2) => {
 }
 
 const printInfo = async () => {
-  // yeah,this line is very bad, but i dunno how call the main module directory
   const ascii = await parseAscii();
   const propertyKeys = Object.keys(properties);
   const length = longerNumber(propertyKeys.length,ascii.length);
 
   for (let i = 0;i<=length;i++) {
-    let asciiLine = ascii[i];
-    let key = propertyKeys[i];
-    let value = properties[propertyKeys[i]];
+    const asciiLine = ascii[i];
+    const key = propertyKeys[i];
+    const value = properties[propertyKeys[i]];
 
     let propertyString = undefined;
     if (key && value) {
